@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/dialog.css">
+    <link rel="stylesheet" href="css/index.css">
+    <title>提示框</title>
+</head>
+<body>
+    <div class="container">
+        <h2 class="title">dialog.js使用教程</h2>
+        <h4>一、基本使用方法</h4>
+        <p>在要使用</p>
+        <button id="btn" class="btn info">click</button>
+    </div>
+    <script src="./js/dialog.js"></script>
+    <script>
+        let btn = document.getElementById("btn");
+        btn.onclick = function(){
+            new Dialog({
+                type:"info",
+                text:"welcome",
+
+            });
+        }
+    </script>
+</body>
+</html>
