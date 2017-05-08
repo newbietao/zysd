@@ -2,25 +2,162 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/dialog.css">
-    <link rel="stylesheet" href="css/index.css">
     <title>提示框</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="./node_modules/new_dialog/dialog.css">
+    <script src="./node_modules/new_dialog/index.js"></script>
+    <!--引入animate.css用于演示，不是必须的-->
+    <link rel="stylesheet" href="css/animate.css">
 </head>
 <body>
     <div class="container">
         <h2 class="title">dialog.js使用教程</h2>
         <h4>一、基本使用方法</h4>
-        <p>在要使用</p>
-        <button id="btn" class="btn info">click</button>
+        <h5>安装：</h5>
+        <p>$ npm init</p>
+        <p>$ npm install new_dialog</p>
+        <h5>引入：</h5>
+        <p><xmp><link rel="stylesheet" href="./node_modules/new_dialog/dialog.css"></xmp></p>
+        <p><xmp><script src="./node_modules/new_dialog/index.js"></script></xmp></p>
+        <h5>使用：</h5>
+        <p><xmp>    new Dialog({
+        type:"info",                 //对话框类型，info、success、warning、danger四类，可以扩展后面有介绍
+        text:"示例一",              //对话框内容，默认：hello world!
+        title:"hello world!",       //对话框标题
+        context:"",                 //对话框上下文，后面有介绍
+        style:{                     //对话框样式
+            width : "400px",        //宽度
+            height : "100px",       //高度
+            left : "400px",         //定位X
+            top : "300px"           //定位Y
+        }
+    });
+        </xmp></p>
+        <h5>示例：</h5>
+        <button id="btn1" class="btn info">示例一</button>
+        <h4>二、扩展</h4>
+        <h5>添加自定义类（class）：</h5>
+        <p>这里使用animate.css进行演示</p>
+        <p><xmp>        new Dialog({
+            type:"success",
+            text:"示例二",
+            title:"hello world!",
+            extendClass:"animate animate-shake",//扩展自定义类
+            style:{
+                width : "400px",
+                height : "100px",
+                left : "400px",
+                top : "300px"
+            }
+        });
+        </xmp></p>
+        <h5>示例：</h5>
+        <button id="btn2" class="btn warning">示例二</button>
+        <h5>扩展对话框类型：</h5>
+        <p>扩展对话框类型，只需要为type属性赋值为自定义的值如：mytype,然后在css文件中定义.dialog-mytype{}</p>
+        <p>js文件</p>
+        <p><xmp>        new Dialog({
+            type:"mytype",      //自定义类型
+            text:"示例三",
+            title:"hello world!",
+            extendClass:"",
+            style:{
+                width : "400px",
+                height : "100px",
+                left : "400px",
+                top : "300px"
+            }
+        });
+        </xmp></p>
+        <p>css文件</p>
+        <p><xmp>        .dialog-mytype{
+            color: #8a6d3b;
+            background-color: #fcf8e3;
+            border-color: #faebcc;
+        }
+        </xmp></p>
+        <h5>示例：</h5>
+        <button id="btn3" class="btn success">示例三</button>
+        <h5>为对话框指定上下文：</h5>
+        <p>为对话框指定上下文，只需要为context属性指定上下文</p>
+        <p><strong>注意：</strong>上下文必须是定位元素，要不没有意义，而且指定上下文后style属性里的top、left都相对于上下文</p>
+        <p>js文件</p>
+        <p><xmp>        new Dialog({
+            type:"mytype",      //自定义类型
+            text:"示例四",
+            title:"hello world!",
+            extendClass:"",
+            context:document.body,          //指定上下文
+            style:{
+            width : "400px",
+            height : "100px",
+            left : "400px",
+            top : "300px"
+            }
+            });
+        </xmp></p>
+        <h5>示例：</h5>
+        <button id="btn4" class="btn success">示例四</button>
     </div>
-    <script src="./js/dialog.js"></script>
     <script>
-        let btn = document.getElementById("btn");
-        btn.onclick = function(){
+        let btn1 = document.getElementById("btn1");
+        let btn2 = document.getElementById("btn2");
+        let btn3 = document.getElementById("btn3");
+        let btn4 = document.getElementById("btn4");
+        btn1.onclick = function(){
             new Dialog({
                 type:"info",
-                text:"welcome",
-
+                text:"示例一",
+                title:"hello world!",
+                style:{
+                    width : "400px",
+                    height : "100px",
+                    left : "400px",
+                    top : "300px"
+                }
+            });
+        }
+        btn2.onclick = function(){
+            new Dialog({
+                type:"success",
+                text:"示例二",
+                title:"hello world!",
+                extendClass:"shake animated",
+                style:{
+                    width : "400px",
+                    height : "100px",
+                    left : "400px",
+                    top : "800px"
+                }
+            });
+        }
+        btn3.onclick = function(){
+            new Dialog({
+                type:"mytype",
+                text:"示例三",
+                title:"hello world!",
+                extendClass:"",
+                style:{
+                    width : "400px",
+                    height : "100px",
+                    left : "400px",
+                    top : "1400px"
+                }
+            });
+        }
+        btn4.onclick = function(){
+            new Dialog({
+                type:"mytype",
+                text:"示例四",
+                title:"hello world!",
+                extendClass:"",
+                context:document.body,
+                style:{
+                    width : "400px",
+                    height : "100px",
+                    left : "400px",
+                    top : "1900px"
+                }
             });
         }
     </script>

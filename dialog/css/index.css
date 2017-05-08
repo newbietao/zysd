@@ -23,8 +23,14 @@
 }
 .container{
     width:900px;
-    margin:0 auto;
+    margin:50px auto;
 }
 .container .title {
     text-align: center;
+
+}
+.dialog-mytype{
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
 }
